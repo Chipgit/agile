@@ -61,7 +61,11 @@ Update cron (typing crontab -e) and add the following lines
 
 05 16 * * * /usr/bin/python3 /home/pi/Agile/store_prices.py >> /home/pi/cron.log
 
+## Considerations
 
+Usage will not initially show on a fresh database, so don't panic! 
+Although the code will pull the usage data -  to caluclate the cost it needs the prices. Previous prices can not be obtained via the API so the calulation will fail resulting in "---" showing. After a couple of days you will see you usage appear on the display. 
+The database does not clean itself, and will grow, it is data overhead is relativly small though and should last many years and years. Feel free to simplete delete the database from the Agile folder and restart the device. The boot store_prices.py call will recreate it and get the current prices, but be aware of the above consideration regarding usage. 
 
 
 ## Contributing
