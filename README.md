@@ -1,4 +1,7 @@
-@@ -1,2 +1,49 @@
+![Test Image 7](https://github.com/Chipgit/agile/master/inky1.jpg)
+
+
+
 # agile
 Display Future Octopus Agile Electricty Prices and Previous Usage and Cost. With a little weather add on.. 
 
