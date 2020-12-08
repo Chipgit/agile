@@ -34,7 +34,8 @@ draw = ImageDraw.Draw(img)
 prices = []  
 for offset in range(0, 60):  #30h = 60 segments
     min_offset = 30 * offset
-    the_now = datetime.datetime.now(datetime.timezone.utc)
+    #the_now = datetime.datetime.now(datetime.timezone.utc)   #correction trying to fix BST
+    the_now = datetime.datetime.now()
     now_plus_offset = the_now + datetime.timedelta(minutes=min_offset)
     the_year = now_plus_offset.year
     the_month = now_plus_offset.month
@@ -77,8 +78,10 @@ for index, chunk in enumerate(pricechunk):
 
 # printing cheapest chunk and time
 min_offset = pricechunk.index(minimumchunk) * 30
-time_of_cheapest = the_now + datetime.timedelta(minutes=(min_offset+60))  
-end_time_of_cheapest = the_now + datetime.timedelta(minutes=(min_offset+180))
+#time_of_cheapest = the_now + datetime.timedelta(minutes=(min_offset+60))        #correction trying to fix BST
+#end_time_of_cheapest = the_now + datetime.timedelta(minutes=(min_offset+180))   #correction trying to fix BST
+time_of_cheapest = the_now + datetime.timedelta(minutes=(min_offset))  
+end_time_of_cheapest = the_now + datetime.timedelta(minutes=(min_offset+120))
 draw.text((0,74), "  Cheapest 2hrs - " + ("{0:.1f}".format((minimumchunk)/4)) + "p ave @ " + (str(time_of_cheapest.time())[0:5]) +  "-" + (str(end_time_of_cheapest.time())[0:5]), inky_display.BLACK, ImageFont.truetype(FredokaOne, 20))
 
 # plot the graph
